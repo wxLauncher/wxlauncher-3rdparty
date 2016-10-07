@@ -10,26 +10,31 @@ function(configure_dep DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR)
 		RESULT_VARIABLE RES
 		)
 	if(RES)
-		message(FATAL_ERROR "Configure of ${DEPNAME} failed: ${RES}")
+		message(FATAL_ERROR "Configure of ${DEP_NAME} failed: ${RES}")
 	endif()
 endfunction()
 
-function(build_dep DEP_NAME BUILD_DIR BUILD_TYPE)
+function(build_dep DEP_NAME BUILD_DIR BUILD_TYPE TARGET)
 	message("Building ${DEP_NAME} in: ${BUILD_DIR}")
 	execute_process(
 		COMMAND ${CMAKE_COMMAND}
 		--build .
-	        --target INSTALL
+		--target ${TARGET}
 		--config ${BUILD_TYPE}
 		WORKING_DIRECTORY ${BUILD_DIR}
 		RESULT_VARIABLE RES
 	)
 	if(RES)
-		message(FATAL_ERROR "Build of OpenAL-soft failed: ${RES}")
+		message(FATAL_ERROR "Build of ${DEP_NAME} failed: ${RES}")
 	endif()
 endfunction()
 
-function(configure_build_dep DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR)
+function(install_dep DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR)
 	configure_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ${INSTALL_DIR})
-	build_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE})
+	build_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} INSTALL)
+endfunction()
+
+function(build_dep_only DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR)
+	configure_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ${INSTALL_DIR})
+	build_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ALL_BUILD)
 endfunction()

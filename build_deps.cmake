@@ -10,9 +10,9 @@ set(SDL_BUILD "${3RD_PARTY_SDL2}/build")
 set(WXMSW28_BUILD "${3RD_PARTY_WXMSW28}/build")
 set(WXWIDGETS31_BUILD "${3RD_PARTY_WXWIDGETS31}/build")
 
-configure_build_dep(OpenAL-Soft ${OPENAL_BUILD} "Release" ${3RD_PARTY_OPENAL})
-configure_build_dep(SDL ${SDL_BUILD} "Release" ${3RD_PARTY_SDL2})
-configure_build_dep(wxMSW2.8 ${WXMSW28_BUILD} "Release" ${3RD_PARTY_WXMSW28})
-configure_build_dep(wxWidgets3.1 ${WXWIDGETS31_BUILD} "Release" ${3RD_PARTY_WXMSW28})
+install_dep(OpenAL-Soft ${OPENAL_BUILD} "Release" ${3RD_PARTY_OPENAL})
+install_dep(SDL ${SDL_BUILD} "Release" ${3RD_PARTY_SDL2})
+build_dep_only(wxMSW2.8 ${WXMSW28_BUILD} "Release" ${3RD_PARTY_WXMSW28})
+build_dep_only(wxWidgets3.1 ${WXWIDGETS31_BUILD} "Release" ${3RD_PARTY_WXMSW28})
 
 
