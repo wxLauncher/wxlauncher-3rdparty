@@ -30,12 +30,14 @@ function(build_dep DEP_NAME BUILD_DIR BUILD_TYPE TARGET)
 	endif()
 endfunction()
 
-function(install_dep DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR)
-	configure_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ${INSTALL_DIR})
+function(install_dep DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR
+	CONFIGURE_ARGS)
+	configure_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ${INSTALL_DIR}
+		${CONFIGURE_ARGS})
 	build_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} INSTALL)
 endfunction()
 
 function(build_dep_only DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR)
-	configure_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ${INSTALL_DIR})
+	configure_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ${INSTALL_DIR} "")
 	build_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ALL_BUILD)
 endfunction()

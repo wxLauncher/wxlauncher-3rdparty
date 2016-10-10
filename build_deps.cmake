@@ -6,7 +6,7 @@ include(build_deps-functions.cmake)
 include(dirs.cmake)
 
 set(OPENAL_BUILD "${3RD_PARTY_OPENAL}/build")
-set(OPENAL_CONFIGURE_OPTS "")
+set(OPENAL_CONFIGURE_OPTS "-DUNUSED=OFF")
 set(SDL_BUILD "${3RD_PARTY_SDL2}/build")
 set(SDL_CONFIGURE_OPTS "-DSDL_STATIC=OFF")
 set(WXMSW28_BUILD "${3RD_PARTY_WXMSW28}/build")
