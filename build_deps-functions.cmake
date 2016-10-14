@@ -30,11 +30,17 @@ function(build_dep DEP_NAME BUILD_DIR BUILD_TYPE TARGET)
 	endif()
 endfunction()
 
+if(UNIX)
+	set(INSTALL "install")
+else()
+	set(INSTALL "INSTALL")
+endif()
+
 function(install_dep DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR
 	CONFIGURE_ARGS)
 	configure_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ${INSTALL_DIR}
 		${CONFIGURE_ARGS})
-	build_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} INSTALL)
+	build_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ${INSTALL})
 endfunction()
 
 function(build_dep_only DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR)
