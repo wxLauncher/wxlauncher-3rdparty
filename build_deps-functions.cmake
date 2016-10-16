@@ -32,8 +32,10 @@ endfunction()
 
 if(UNIX)
 	set(INSTALL "install")
+	set(ALL_BUILD "all")
 else()
 	set(INSTALL "INSTALL")
+	set(ALL_BUILD "ALL_BUILD")
 endif()
 
 function(install_dep DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR
@@ -45,5 +47,5 @@ endfunction()
 
 function(build_dep_only DEP_NAME BUILD_DIR BUILD_TYPE INSTALL_DIR)
 	configure_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ${INSTALL_DIR} "")
-	build_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ALL_BUILD)
+	build_dep(${DEP_NAME} ${BUILD_DIR} ${BUILD_TYPE} ${ALL_BUILD})
 endfunction()
