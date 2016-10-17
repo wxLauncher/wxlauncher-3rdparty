@@ -5,6 +5,14 @@ if(CMAKE_MAJOR_VERSION GREATER 2)
   cmake_policy(SET CMP0043 OLD)
 endif()
 
-add_custom_target(nmake_build ALL
-	COMMAND nmake -f makefile.vc UNICODE=1 BUILD=$<LOWER_CASE:$<CONFIG>>
-	WORKING_DIRECTORY msw)
+if(IS_WIN32)
+	add_custom_target(nmake_build ALL
+		COMMAND nmake -f makefile.vc
+		UNICODE=1 BUILD=$<LOWER_CASE:$<CONFIG>>
+		WORKING_DIRECTORY msw)
+elseif(IS_APPLE)
+	add_custom_target(xcode_build ALL
+		COMMAND ../configure --enable-cxx11
+		COMMAND make
+		)
+endif()
