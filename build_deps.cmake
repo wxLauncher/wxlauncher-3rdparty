@@ -16,7 +16,9 @@ install_dep(OpenAL-Soft ${OPENAL_BUILD} "Release" ${3RD_PARTY_OPENAL}
 	${OPENAL_CONFIGURE_OPTS})
 install_dep(SDL ${SDL_BUILD} "Release" ${3RD_PARTY_SDL2}
 	${SDL_CONFIGURE_OPTS})
-build_dep_only(wxMSW2.8 ${WXMSW28_BUILD} "Release" ${3RD_PARTY_WXMSW28})
+if(IS_WIN32)
+	build_dep_only(wxMSW2.8 ${WXMSW28_BUILD} "Release" ${3RD_PARTY_WXMSW28})
+endif()
 build_dep_only(wxWidgets3.1 ${WXWIDGETS31_BUILD} "Release" ${3RD_PARTY_WXMSW28})
 
 
