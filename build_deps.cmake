@@ -14,8 +14,12 @@ set(WXWIDGETS31_BUILD "${3RD_PARTY_WXWIDGETS31}/build")
 
 install_dep(OpenAL-Soft ${OPENAL_BUILD} "Release" ${3RD_PARTY_OPENAL}
 	${OPENAL_CONFIGURE_OPTS})
-install_dep(SDL ${SDL_BUILD} "Release" ${3RD_PARTY_SDL2}
-	${SDL_CONFIGURE_OPTS})
+if(IS_APPLE)
+	# Do not build SDL for APPLE because it is already built
+else()
+	install_dep(SDL ${SDL_BUILD} "Release" ${3RD_PARTY_SDL2}
+		${SDL_CONFIGURE_OPTS})
+endif()
 if(IS_WIN32)
 	build_dep_only(wxMSW2.8 ${WXMSW28_BUILD} "Release" ${3RD_PARTY_WXMSW28})
 endif()

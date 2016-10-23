@@ -1,7 +1,12 @@
 
 set(3RD_PARTY_OPENAL "${3RD_PARTY_SOURCE_DIR}/openal-soft-1.17.2")
 message("OpenAL from ${3RD_PARTY_OPENAL}")
-set(3RD_PARTY_SDL2 "${3RD_PARTY_SOURCE_DIR}/SDL2-2.0.5")
+if(IS_APPLE)
+	set(3RD_PARTY_SDL2
+		"${3RD_PARTY_SOURCE_DIR}/binary/macOS/SDL2.framework")
+else()
+	set(3RD_PARTY_SDL2 "${3RD_PARTY_SOURCE_DIR}/SDL2-2.0.5")
+endif()
 message("SDL2 from ${3RD_PARTY_SDL2}")
 set(3RD_PARTY_WXMSW28 "${3RD_PARTY_SOURCE_DIR}/wxMSW-2.8.12")
 message("wxMSW2.8 from ${3RD_PARTY_WXMSW28}")
