@@ -5,6 +5,8 @@ if(CMAKE_MAJOR_VERSION GREATER 2)
   cmake_policy(SET CMP0043 OLD)
 endif()
 
+include(../../cmake/wxl_platforms.cmake)
+
 if(IS_WIN32)
 	add_custom_target(nmake_build ALL
 		COMMAND nmake -f makefile.vc
@@ -12,7 +14,7 @@ if(IS_WIN32)
 		WORKING_DIRECTORY msw)
 elseif(IS_APPLE)
 	add_custom_target(xcode_build ALL
-		COMMAND ../configure --enable-cxx11 --enable-cxx11
+		COMMAND ./configure --enable-cxx11 --enable-cxx11
 		--disable-mediactrl --enable-unicode --enable-debug
 		--disable-shared --with-macosx-version-min=10.9
 		CC=clang CXX=clang++ CXXFLAGS="-stdlib=libc++ -std=c++11"

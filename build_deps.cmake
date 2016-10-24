@@ -1,9 +1,9 @@
-set(GENERATOR "NMake Makefiles")
-
 set(3RD_PARTY_SOURCE_DIR ${CMAKE_BINARY_DIR})
 
-include(build_deps-functions.cmake)
+include(../cmake/wxl_platforms.cmake)
 include(dirs.cmake)
+
+include(build_deps-functions.cmake)
 
 set(OPENAL_BUILD "${3RD_PARTY_OPENAL}/build")
 set(OPENAL_CONFIGURE_OPTS "-DUNUSED=OFF")
