@@ -20,6 +20,5 @@ elseif(IS_APPLE)
 		CC=clang CXX=clang++ CXXFLAGS="-stdlib=libc++ -std=c++11"
 		OBJCXXFLAGS="-stdlib=libc++ -std=c++11" LDFLAGS=-stdlib=libc++
 		COMMAND make
-		VERBATIM
 		)
 endif()
