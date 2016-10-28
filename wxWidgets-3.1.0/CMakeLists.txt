@@ -17,6 +17,7 @@ elseif(IS_APPLE)
 		COMMAND sh ../configure --enable-cxx11 --enable-cxx11
 		--disable-mediactrl --enable-unicode --enable-debug
 		--disable-shared --with-macosx-version-min=10.9
+		--disable-std_string
 		CC=clang CXX=clang++ CXXFLAGS="-stdlib=libc++ -std=c++11"
 		OBJCXXFLAGS="-stdlib=libc++ -std=c++11" LDFLAGS=-stdlib=libc++
 		COMMAND make
