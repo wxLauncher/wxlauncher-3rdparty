@@ -14,10 +14,10 @@ if(IS_WIN32)
 		WORKING_DIRECTORY msw)
 elseif(IS_APPLE)
 	add_custom_target(xcode_build ALL
-		COMMAND sh ../configure --enable-cxx11 --enable-cxx11
+		COMMAND ../configure --enable-cxx11 --enable-cxx11
 		--disable-mediactrl --enable-unicode --enable-debug
 		--disable-shared --with-macosx-version-min=10.9
-		--disable-std_string
+		--disable-std_string --enable-universal_binary=i386,x86_64
 		CC=clang CXX=clang++ CXXFLAGS="-stdlib=libc++ -std=c++11"
 		OBJCXXFLAGS="-stdlib=libc++ -std=c++11" LDFLAGS=-stdlib=libc++
 		COMMAND make
