@@ -3,7 +3,7 @@ set(3RD_PARTY_OPENAL "${3RD_PARTY_SOURCE_DIR}/openal-soft-1.17.2")
 message("OpenAL from ${3RD_PARTY_OPENAL}")
 if(IS_APPLE)
 	set(3RD_PARTY_SDL2
-		"${3RD_PARTY_SOURCE_DIR}/binary/macOS/SDL2.framework")
+		"${3RD_PARTY_SOURCE_DIR}/binary/macOS")
 else()
 	set(3RD_PARTY_SDL2 "${3RD_PARTY_SOURCE_DIR}/SDL2-2.0.5")
 endif()
